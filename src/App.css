@@ -112,8 +112,10 @@ img {
 /* Cards */
 .card {
   padding: 1rem;
-  border: #ccc 1px dotted;
+  border: 1px solid teal;
   margin: 0.7rem 0;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.15);
 }
 
 /* List */
