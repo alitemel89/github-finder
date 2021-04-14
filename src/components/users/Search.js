@@ -1,45 +1,32 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-class Search extends Component {
-  state = {
-    text: "",
+const Search = ({ showClear, clearUsers, searchUsers, setAlert }) => {
+  const [text, setText] = useState('');
+
+  const handleChange = (e) => {
+    setText(e.target.value)
   };
 
-  static propTypes = {
-    searchUsers: PropTypes.func.isRequired,
-    clearUsers: PropTypes.func.isRequired,
-    showClear: PropTypes.bool,
-    setAlert: PropTypes.func.isRequired,
-  };
-
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.text === "") {
-      this.props.setAlert("Please enter something", "light");
+    if (text === "") {
+      setAlert("Please enter something", "light");
     } else {
-      this.props.searchUsers(this.state.text);
-      this.setState({ text: "" });
+      searchUsers(text);
+      setText('')
     }
   };
-
-  render() {
-    const { showClear, clearUsers } = this.props;
+    
     return (
       <div>
-        <form className="form" onSubmit={this.handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
           <input
             type="text"
             name="text"
             placeholder="Search Users..."
-            value={this.state.text}
-            onChange={this.handleChange}
+            value={text}
+            onChange={handleChange}
           />
           <input
             type="submit"
@@ -54,7 +41,14 @@ class Search extends Component {
         )}
       </div>
     );
-  }
 }
+
+
+Search.propTypes = {
+  searchUsers: PropTypes.func.isRequired,
+  clearUsers: PropTypes.func.isRequired,
+  showClear: PropTypes.bool,
+  setAlert: PropTypes.func.isRequired,
+};
 
 export default Search;
