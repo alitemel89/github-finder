@@ -2,8 +2,8 @@
 
 /* Global Styles */
 :root {
-  --primary-color: #dc3545;
-  --dark-color: #333333;
+  --primary-color: #275158;
+  --dark-color: #2d402c;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
@@ -118,6 +118,11 @@ img {
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.15);
 }
 
+.card:hover {
+  transform: scale(1.02);
+  transition:all .4s ease;
+}
+
 /* List */
 .list {
   margin: 0.5rem 0;
@@ -209,6 +214,7 @@ img {
   margin-right: 0.5rem;
   transition: opacity 0.2s ease-in;
   outline: none;
+  border-radius: 10px;
 }
 
 .btn-link {
@@ -249,9 +255,13 @@ img {
 
 .btn-primary,
 .bg-primary,
-.badge-primary,
 .alert-primary {
-  background: var(--primary-color);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(80,118,51,1) 66%, rgba(42,183,25,1) 100%);
+  color: #fff;
+}
+
+.badge-primary {
+  background: #275158;
   color: #fff;
 }
 
@@ -307,7 +317,9 @@ img {
 
 .round-img {
   border-radius: 50%;
+  animation: border 1s ease 1 forwards;
 }
+
 
 /* Forms */
 input {
@@ -417,4 +429,23 @@ table th {
   .navbar h1 {
     margin-right: 2rem;
   }
+}
+
+
+/* Animations */
+@keyframes border {
+  0% {
+    box-shadow: 6px 5px 2px 2px rgba(0,0,0,0.15);
+  }
+  50% {
+    box-shadow: -4px 6px 20px 2px #275158;
+  }
+  75% {
+    box-shadow: 6px -2px -3px 2px #28a745;
+  } 
+
+  80% {
+    border: none;
+  } 
+
 }

@@ -1,13 +1,16 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Navbar = ({ title }) => {
   return (
     <nav className="navbar bg-primary">
       <h1 className="">
-        <FaGithub style={{ float: "left", fontSize: 36 }} /> &nbsp;
-        {title}
+        <Link to="/">
+          <FaGithub
+            style={{ float: "left", fontSize: 36, cursor: "pointer" }}
+          /> {title}
+        </Link>
       </h1>
       <ul>
         <li>
